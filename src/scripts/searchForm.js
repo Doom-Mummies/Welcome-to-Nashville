@@ -1,3 +1,4 @@
+// string that enters search form into HTML
 const buildAndAppendSearchForm = () => {
     const searchForm = `
     <section class="search-form">
@@ -15,7 +16,7 @@ const buildAndAppendSearchForm = () => {
     `
     console.log(searchForm)
   
+    // inserts string into search-container div
     const searchContainerDiv = document.querySelector("#search-container")
     searchContainerDiv.innerHTML = searchForm
   }
-  
