@@ -18,3 +18,4 @@ const buildAndAppendSearchForm = () => {
     const searchContainerDiv = document.querySelector("#search-container")
     searchContainerDiv.innerHTML = searchForm
   }
+  
