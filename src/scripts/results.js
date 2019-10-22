@@ -8,8 +8,8 @@ const buildMeetupHtml = events => `
 const displayMeetupHtml = allMeetups => {
   let MeetupSearchResultsHtml = ""
   allMeetups.forEach(events => {
-    let buildMeetupHtml = buildMeetupHTML(events)
-    MeetupSearchResultsHtml += buildMeetupHtml
+    let meetupHtml = buildMeetupHtml(events)
+    MeetupSearchResultsHtml += meetupHtml
   })
   const searchResultsSection = document.querySelector("#results-container")
   searchResultsSection.innerHTML = MeetupSearchResultsHtml
