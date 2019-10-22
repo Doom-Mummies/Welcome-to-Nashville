@@ -11,4 +11,8 @@ const displayMeetupHtml = allMeetups => {
     let buildMeetupHtml = buildMeetupHTML(events)
     MeetupSearchResultsHtml += buildMeetupHtml
   })
+  const searchResultsSection = document.querySelector("#results-container")
+  searchResultsSection.innerHTML = MeetupSearchResultsHtml
 }
+
+
