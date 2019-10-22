@@ -19,7 +19,7 @@ const buildAndAppendSearchForm = () => {
       </article>
 
       <article>
-        <input type="text" placeholder="concerts by genre">
+        <input id="concertsGenreSearch" type="text" placeholder="concerts by genre">
         <button id = "concerts-search-button">Search</button>
       </article>
     </section>
