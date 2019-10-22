@@ -7,8 +7,8 @@ const buildAndAppendSearchForm = () => {
       <button id = "restaurant-search-button">Search</button><br>
       <input type="text"placeholder="meetups by topic">
       <button id = "meetups-search-button">Search</button><br>
-      <input type="text" placeholder="concerts by genre">
-      <button id = "concerts-search-button">Search</button><br>
+      <input id="concertsGenreSearch" type="text" placeholder="concerts by genre">
+      <button id="concerts-search-button">Search</button><br>
     </section>
     <section class="search-results"></section>
     `

@@ -1,7 +1,4 @@
-console.log("this has changed");
+const ticketMasterBaseUrl = "https://app.ticketmaster.com/discovery/v2/events.json" //Base URL for TicketMaster API
 
-fetch("https://app.ticketmaster.com/discovery/v2/events.json?apikey=LJiodGFvXhaw9a8blqRbrMKTj4aiYv2Z&stateCode=TN&classificationName=music&dmaID=343")
-    .then(rawApiData => rawApiData.json())
-    .then(parsedApiData => {
-        console.log(parsedApiData)
-    })
+const searchTicketMaster = (searchInput) => fetch(`${ticketMasterBaseUrl}?${concertsTicketMasterKey}&stateCode=TN&classificationName=music&dmaID=343&${searchInput}`)
+    .then(rawApiData => rawApiData.json()) //Takes the results and parses it 

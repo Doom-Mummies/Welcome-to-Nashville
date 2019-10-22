@@ -1,7 +1,7 @@
-const parkSearchButton = document.querySelector("#park-search-button")
+// const parkSearchButton = document.querySelector("#park-search-button")
 
-parkSearchButton.addEventListener("click", () => {
-    const parkFeaturesDropdownValue = document.querySelector("#park-features-dropdown")
+// parkSearchButton.addEventListener("click", () => {
+//     const parkFeaturesDropdownValue = document.querySelector("#park-features-dropdown")
 
-    console.log(parkFeaturesDropDownValue)
-})
+//     console.log(parkFeaturesDropDownValue)
+// })
