@@ -7,20 +7,20 @@ const buildAndAppendSearchForm = () => {
 
     <section class="search-form">
       <h3>Search for stuff to do today: </h3>
-      
+
       <article>
         <input type="text" placeholder="restaurants by food type" class="restaurantInput">
         <button id = "restaurant-search-button">Search</button>
       </article>
 
       <article>
-        <input id="concertsGenreSearch" type="text"placeholder="meetups by topic">
+        <input type="text" placeholder="meetups by topic" id="input-3">
         <button id = "meetups-search-button">Search</button>
       </article>
 
       <article>
-        <input type="text" placeholder="concerts by genre">
-        <button id="concerts-search-button">Search</button>
+        <input id="concertsGenreSearch" type="text" placeholder="concerts by genre">
+        <button id = "concerts-search-button">Search</button>
       </article>
     </section>
 
