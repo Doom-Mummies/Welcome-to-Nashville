@@ -1,13 +1,12 @@
 // string that enters search form into HTML
 const buildAndAppendSearchForm = () => {
     const searchForm = `
+    <header id = "welcome">
+      <h1>Welcome to Nashville!</h1>
+    </header>
+
     <section class="search-form">
       <h3>Search for stuff to do today: </h3>
-
-      <article>
-        <input type="text" placeholder="park by feature">
-        <button id = "park-search-button">Search</button>
-      </article>
 
       <article>
         <input type="text" placeholder="restaurants by food type" class="restaurantInput">
@@ -15,7 +14,7 @@ const buildAndAppendSearchForm = () => {
       </article>
 
       <article>
-        <input type="text"placeholder="meetups by topic">
+        <input type="text" placeholder="meetups by topic" id="input-3">
         <button id = "meetups-search-button">Search</button>
       </article>
 
