@@ -14,6 +14,8 @@ const displayMeetupHtml = allMeetups => {
   })
   const searchResultsSection = document.querySelector("#results-container")
   searchResultsSection.innerHTML = MeetupSearchResultsHtml
+  // called function to add event listener to the save buttons on the meetup results
+saveMeetupToItineraryButton()
 }
 
 
