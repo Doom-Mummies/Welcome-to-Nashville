@@ -39,32 +39,34 @@ const handleParkSearch = () => {
         "#park-features-dropdown"
     );
 
-    // function call to fetch the data based on the value from the dropdown
-    searchParksForFeatures(parkFeaturesDropdown.value).then(response => {
-        const parkResults = [];
-        // loop through each park object to capture name and address
-        response.forEach(park => {
-            // set park name
-            const name = park.park_name;
-            // set address. The "park.mapped_location.human_address" value is a string instead of an object and has to be parsed by JSON.parse()
-            const address = JSON.parse(park.mapped_location.human_address)
-                .address;
+    // only do the fetch call if there is a value selected
+    if (parkFeaturesDropdown.value) {
+        // function call to fetch the data based on the value from the dropdown
+        searchParksForFeatures(parkFeaturesDropdown.value).then(response => {
+            const parkResults = [];
+            // loop through each park object to capture name and address
+            response.forEach(park => {
+                // set park name
+                const name = park.park_name;
+                // set address. The "park.mapped_location.human_address" value is a string instead of an object and has to be parsed by JSON.parse()
+                const address = JSON.parse(park.mapped_location.human_address)
+                    .address;
 
-            // push name and address of results onto parkResults array
-            parkResults.push({ name: name, address: address });
+                // push name and address of results onto parkResults array
+                parkResults.push({ name: name, address: address });
+            });
+
+            // function call to pull a set amount of random results from the response 
+            const results = selectRandomResults(parkResults, numberOfResults);
+
+            // function call to display the results in the result section
+            
+            displayParkHtml(results)
+            
+            // reset the dropdown
+            parkFeaturesDropdown.selectedIndex = 0;
         });
-
-        // function call to pull a set amount of random results from the response 
-        const results = selectRandomResults(parkResults, numberOfResults);
-
-        // function call to display the results in the result section
-        
-        // displayParkResults(results)
-        console.log(results)
-        
-        // reset the dropdown
-        parkFeaturesDropdown.selectedIndex = 0;
-    });
+    }
 };
 
 // function definition to add the event listener to the park search button
