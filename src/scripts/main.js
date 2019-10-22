@@ -8,3 +8,4 @@ buildAndAppendSearchForm()
 attachEventListenerToRestaurantSearchButton()
 
 buildAndAppendParkDropdownToSearchForm()
+
