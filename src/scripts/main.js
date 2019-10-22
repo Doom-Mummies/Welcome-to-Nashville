@@ -1,3 +1,3 @@
 buildAndAppendSearchForm()
-attachEventListenerToSearchButton()
+attachEventListenerToMeetupSearchButton()
 buildAndAppendParkDropdownToSearchForm()
