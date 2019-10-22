@@ -17,3 +17,4 @@ buildAndAppendParkDropdownToSearchForm()
 
 displayGenreSearch()
 
+addEventListenerToSearchButton()
