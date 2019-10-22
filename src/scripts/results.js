@@ -5,6 +5,7 @@ const buildRestaurantHtml = restaurant => `
   <p>
       ${restaurant.restaurant.location.address}
   </p>
+  <button id = "save-button">Save</button>
 </article>
 `
 

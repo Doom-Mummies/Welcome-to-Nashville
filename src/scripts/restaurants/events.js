@@ -17,3 +17,4 @@ const handleSearch = event => {
     const restaurantSearchButton = document.getElementById("restaurant-search-button")
     restaurantSearchButton.addEventListener("click", handleSearch)
   }
+  
