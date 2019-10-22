@@ -11,11 +11,15 @@ const buildRestaurantHtml = restaurant => `
 
 const displayRestaurantHtml = allRestaurants => {
   let restaurantResultsHtml = ""
+  let restaurantNum = 1
   allRestaurants.forEach(restaurants => {
+    if(restaurantNum <= 4){
     console.log(restaurants)
     let restaurantHtml = buildRestaurantHtml(restaurants)
     restaurantResultsHtml += restaurantHtml
-  });
+    restaurantNum++
+  }});
+
 
   const restaurantSearchResultsSection = document.querySelector(".search-results")
   restaurantSearchResultsSection.innerHTML = restaurantResultsHtml
