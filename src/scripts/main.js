@@ -1,5 +1,2 @@
 buildAndAppendSearchForm()
-// searchMeetups()
-// displayMeetupHtml()
 attachEventListenerToSearchButton()
-// handleMeetupSearch()

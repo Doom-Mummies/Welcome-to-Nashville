@@ -1,5 +1,5 @@
-// const searchMeetups = userInput => fetch("https://raw.githubusercontent.com/nss-cohort-36/temp-eb-api/master/search-response.json")
-// .then(result => result.json())
+const searchMeetups = userInput => fetch("https://raw.githubusercontent.com/nss-cohort-36/temp-eb-api/master/search-response.json")
+.then(result => result.json())
 // .then(results => console.log(results));
 
 const attachEventListenerToSearchButton = () => {
@@ -25,7 +25,7 @@ const attachEventListenerToSearchButton = () => {
 // }
 
     const handleMeetupSearch = event => {
-        console.log(event)
+        // console.log(event)
         const inputField = document.getElementById("input-3")
         console.log("user input", inputField.value)
       
