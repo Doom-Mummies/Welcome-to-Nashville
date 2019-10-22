@@ -6,7 +6,7 @@ const buildAndAppendSearchForm = () => {
     </header>
 
     <section class="search-form">
-      <h3>Search for stuff to do today: </h3>
+      <h3>Search for stuff to do today </h3>
 
       <article>
         <input type="text" placeholder="restaurants by food type" class="restaurantInput">
