@@ -15,4 +15,7 @@ attachEventListenerToRestaurantSearchButton()
 
 buildAndAppendParkDropdownToSearchForm()
 
+// The function definition for this is in the concerts folder events.js file...
+displayGenreSearch()
+
 addEventListenerToSearchButton()
