@@ -58,7 +58,7 @@ const handleParkSearch = () => {
         const results = selectRandomResults(parkResults, numberOfResults);
 
         // function call to display the results in the result section
-        displayParkResults(results)
+        // displayParkResults(results)
 
         // reset the dropdown
         parkFeaturesDropdown.selectedIndex = 0;
