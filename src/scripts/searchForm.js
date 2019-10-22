@@ -3,10 +3,6 @@ const buildAndAppendSearchForm = () => {
     const searchForm = `
     <section class="search-form">
       <h3>Search for stuff to do today: </h3>
-      <article>
-        <input type="text" placeholder="park by feature">
-        <button id = "park-search-button">Search</button>
-      </article>
 
       <article>
         <input type="text" placeholder="restaurants by food type" class="restaurantInput">
