@@ -1,3 +1,4 @@
+// This function grabs the user input and inserts the user input into the fetch call URL. Then it executes the displayMeetupHtml function to display the results on the DOM.
 const handleMeetupSearch = events => {
     // console.log(event)
     const inputField = document.getElementById("input-3")
