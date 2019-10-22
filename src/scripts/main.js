@@ -1,2 +1,3 @@
 buildAndAppendSearchForm()
 buildAndAppendParkDropdownToSearchForm()
+addEventListenerToSearchButton()
