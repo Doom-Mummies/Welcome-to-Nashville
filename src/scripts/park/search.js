@@ -1,46 +1,42 @@
-const buildAndAppendParkDropdown = () => {
+const buildAndAppendParkDropdownToSearchForm = () => {
     const parkFeatures = {
-        "volleyball": "Volleyball",
-        "tennis_courts": "Tennis Courts",
-        "hiking_trails": "Hiking Trails",
         "community_center": "Community Center",
         "nature_center": "Nature Center",
         "playground": "Playgrounds",
         "ada_accessible": "ADA Accessible",
         "restrooms_available": "Restrooms Available",
+        "picnic_shelters": "Picnic Shelters",
+        "dog_park": "Dog Park",
+        "baseball_fields": "Baseball Fields",
+        "basketball_courts": "Basketball Courts",
+        "volleyball": "Volleyball",
+        "soccer_fields": "Soccer Fields",
+        "football_multi_purpose_fields": "Football Fields",
+        "tennis_courts": "Tennis Courts",
+        "disc_golf": "Disc Golf",
+        "skate_park": "Skate Park",
+        "swimming_pool": "Swimming Pool",
+        "spray_park": "Spray Park",
+        "golf_course": "Golf Course",
+        "walk_jog_paths": "Walk/Jog Paths",
+        "hiking_trails": "Hiking Trails",
+        "horse_trails": "Horse Trails",
+        "mountain_bike_trails": "Mountain Bike Trails",
+        "boat_launch": "Boat Launch",
+        "camping_available_by_permit": "Camping Available (By Permit)",
+        "fishing_by_permit": "Fishing (By Permit)",
+        "lake": "Lake",
+        "canoe_launch": "Canoe Launch",
+        "community_garden": "Community Garden",
+        "historic_features": "Historic Features",
     }
-/*
-        "picnic_shelters": "Yes",
-        "picnic_shelters_quantity": "9",
-        "dog_park": "Yes",
-        "baseball_fields": "Yes",
-        "basketball_courts": "Yes",
-        "volleyball": "No",
-        "soccer_fields": "No",
-        "football_multi_purpose_fields": "No",
-        "tennis_courts": "Yes",
-        "disc_golf": "Yes",
-        "skate_park": "No",
-        "swimming_pool": "No",
-        "spray_park": "No",
-        "golf_course": "Yes",
-        "walk_jog_paths": "Yes",
-        "hiking_trails": "No",
-        "horse_trails": "No",
-        "mountain_bike_trails": "No",
-        "boat_launch": "Yes",
-        "camping_available_by_permit": "No",
-        "fishing_by_permit": "Yes",
-        "lake": "Yes",
-        "canoe_launch": "No",
-        "community_garden": "No",
-        "historic_features": "No",
-*/
+
     const parkFeaturesSelectElement = document.createElement("select")
-    parkFeaturesSelectElement.id = "park__features"
+    parkFeaturesSelectElement.id = "park-features-dropdown"
+
+    parkFeaturesSelectElement.innerHTML = `<option disabled selected value>parks by feature</option>`
 
     const buildDropdown = () => {
-        // parkFeatures.forEach((feature) => {
         for (let feature in parkFeatures) {
             const option = document.createElement("option")
             option.value = feature
@@ -50,7 +46,12 @@ const buildAndAppendParkDropdown = () => {
     }
 
     buildDropdown()
-    const container = document.querySelector("#search-form");
+    const container = document.querySelector(".search-form");
+
+    const button = document.createElement("button")
+    button.id = "park-search-button"
+    button.textContent = "Search"
 
     container.appendChild(parkFeaturesSelectElement);
+    container.appendChild(button)
 };
