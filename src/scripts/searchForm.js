@@ -32,7 +32,7 @@ const buildAndAppendSearchForm = () => {
     `
     //make sure to put class on input tags so event can find the correct input
     console.log(searchForm)
-  
+
     // inserts string into search-container div
     const searchContainerDiv = document.querySelector("#search-container")
     searchContainerDiv.innerHTML = searchForm
