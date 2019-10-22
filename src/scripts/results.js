@@ -2,7 +2,7 @@
 const buildMeetupHtml = events => `
  <section class="meetupEvent">
  ${events.name.html}${events.description.html}
- <button id="save-button">Search</button>
+ <button id="save-button">Save</button>
  </section>`
 
 // This function loops through the search results (events),creates an HTML element to hold the results , and appends them to the DOM in the results container
