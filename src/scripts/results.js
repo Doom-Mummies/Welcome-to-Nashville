@@ -1,8 +1,9 @@
+// html to be put into .search-results in searchForm.js
 const buildRestaurantHtml = restaurant => `
 <article>
-  <h4>${restaurants.restaurant.name}</h4>
+  <h4>${restaurant.restaurant.name}</h4>
   <p>
-      ${restaurants.restaurant.location.address}
+      ${restaurant.restaurant.location.address}
   </p>
 </article>
 `
@@ -10,8 +11,9 @@ const buildRestaurantHtml = restaurant => `
 
 const displayRestaurantHtml = allRestaurants => {
   let restaurantResultsHtml = ""
-  allRestaurants.forEach(restaurant => {
-    let restaurantHtml = buildRestaurantHtml(restaurant)
+  allRestaurants.forEach(restaurants => {
+    console.log(restaurants)
+    let restaurantHtml = buildRestaurantHtml(restaurants)
     restaurantResultsHtml += restaurantHtml
   });
 
