@@ -5,17 +5,12 @@ const buildAndAppendSearchForm = () => {
       <h3>Search for stuff to do today: </h3>
 
       <article>
-        <input type="text" placeholder="park by feature">
-        <button id = "park-search-button">Search</button>
-      </article>
-
-      <article>
         <input type="text" placeholder="restaurants by food type" class="restaurantInput">
         <button id = "restaurant-search-button">Search</button>
       </article>
 
       <article>
-        <input type="text"placeholder="meetups by topic">
+        <input type="text" placeholder="meetups by topic" id="input-3">
         <button id = "meetups-search-button">Search</button>
       </article>
 

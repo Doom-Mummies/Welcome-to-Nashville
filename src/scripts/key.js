@@ -1,0 +1,1 @@
+const eventbriteAPIKey = "YOUR KEY GOES HERE"
