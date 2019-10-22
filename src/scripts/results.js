@@ -1,20 +1,30 @@
 // This creates the HTML that will be put in the results section upon search for Meetups
 const buildMeetupHtml = events => `
- <section class="meetupEvent">
- ${events.name.html}${events.description.html}
+ <li class="meetup-results-list-item">
+ <span class="meetup-results-description">${events.name.text}: ${events.description.text}</span>
  <button id="save-button">Save</button>
  </section>`
 
 // This function loops through the search results (events),creates an HTML element to hold the results , and appends them to the DOM in the results container
 const displayMeetupHtml = allMeetups => {
-  let MeetupSearchResultsHtml = ""
+  let meetupSearchResultsHtml = ``
   allMeetups.forEach(events => {
     let meetupHtml = buildMeetupHtml(events)
-    MeetupSearchResultsHtml += meetupHtml
+    meetupSearchResultsHtml += meetupHtml
   })
   const searchResultsSection = document.querySelector("#results-container")
-  searchResultsSection.innerHTML = MeetupSearchResultsHtml
+
+  // construct the park results ordered list with list items
+  const meetupResultsHtml = `<ol class="park-results-list">${meetupSearchResultsHtml}</ol>`
+
+  // replace the results section with park search results
+  searchResultsSection.innerHTML = meetupResultsHtml
+
+
 }
+
+
+
 
 
 // html to be put into .search-results in searchForm.js
