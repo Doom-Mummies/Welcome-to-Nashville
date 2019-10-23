@@ -37,16 +37,14 @@ const buildRestaurantHtml = restaurant => `
 
 
 const displayRestaurantHtml = allRestaurants => {
-  let restaurantResultsHtml = ""
-  let restaurantNum = 1
-  allRestaurants.forEach(restaurants => {
-    if(restaurantNum <= 4){
-    console.log(restaurants)
-    let restaurantHtml = buildRestaurantHtml(restaurants)
-    restaurantResultsHtml += restaurantHtml
-    restaurantNum++
-  }});
+  let restaurantResultsHtml = '<ol class="park-results-list">'
 
+  for(let i = 0; i < allRestaurants.length && i <= 3; i++){
+    console.log(allRestaurants[i])
+    restaurantResultsHtml += buildRestaurantHtml(allRestaurants[i])
+  }
+
+  restaurantResultsHtml += '</ol>'
 
   const restaurantSearchResultsSection = document.querySelector("#results-container")
   restaurantSearchResultsSection.innerHTML = restaurantResultsHtml
