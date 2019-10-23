@@ -1,5 +1,6 @@
-// This creates the "li" element HTML that will be put in the results section upon search for Meetups
+// The next 2 functions below are for creating the meetup HTML and displaying it on the DOM
 
+// This creates the "li" HTML element that will be put in the results section upon search for Meetups
 const buildMeetupHtml = (meetupResult) => {
 
   // This creates an "li" element and gives it a class of "meetup-results-list-item"
