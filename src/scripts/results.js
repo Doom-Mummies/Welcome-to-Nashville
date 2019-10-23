@@ -27,13 +27,12 @@ const displayMeetupHtml = allMeetups => {
 const buildRestaurantHtml = (restaurant, index) => `
     <li class="restaurant-results-list-item">
       <span id= "save-text-${index}">${restaurant.restaurant.name}: ${restaurant.restaurant.location.address}</span>
-      <button id = "save-button-${index}">Save</button>
+      <button id = "save-button-${index}" class = "save-button">Save</button>
     </li>
 `
 
-
 const displayRestaurantHtml = allRestaurants => {
-  let restaurantResultsHtml = '<ol class="park-results-list">'
+  let restaurantResultsHtml = '<ol class="restaurant-results-list">'
 
   // limit to max four restuarants (i <= 3)
   for(let i = 0; i < allRestaurants.length && i <= 3; i++){
@@ -45,6 +44,8 @@ const displayRestaurantHtml = allRestaurants => {
 
   const restaurantSearchResultsSection = document.querySelector("#results-container")
   restaurantSearchResultsSection.innerHTML = restaurantResultsHtml
+  
+  attachEventListenerToRestaurantSaveButton()
 }
 
 // function definition to build a single park list item and attach an event listener to the save button
