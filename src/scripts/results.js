@@ -23,35 +23,27 @@ const displayMeetupHtml = allMeetups => {
 
 }
 
-
-
-
-
 // html to be put into .search-results in searchForm.js
 const buildRestaurantHtml = restaurant => `
-<article>
-  <h4>${restaurant.restaurant.name}</h4>
-  <p>
-      ${restaurant.restaurant.location.address}
-  </p>
-  <button id = "save-button">Save</button>
-</article>
+    <li class="restaurant-results-list-item">
+      <span>${restaurant.restaurant.name}: ${restaurant.restaurant.location.address}</span>
+      <button id = "save-button">Save</button>
+    </li>
 `
 
 
 const displayRestaurantHtml = allRestaurants => {
-  let restaurantResultsHtml = ""
-  let restaurantNum = 1
-  allRestaurants.forEach(restaurants => {
-    if(restaurantNum <= 4){
-    console.log(restaurants)
-    let restaurantHtml = buildRestaurantHtml(restaurants)
-    restaurantResultsHtml += restaurantHtml
-    restaurantNum++
-  }});
+  let restaurantResultsHtml = '<ol class="park-results-list">'
 
+  // limit to max four restuarants (i <= 3)
+  for(let i = 0; i < allRestaurants.length && i <= 3; i++){
+    console.log(allRestaurants[i])
+    restaurantResultsHtml += buildRestaurantHtml(allRestaurants[i])
+  }
 
-  const restaurantSearchResultsSection = document.querySelector(".search-results")
+  restaurantResultsHtml += '</ol>'
+
+  const restaurantSearchResultsSection = document.querySelector("#results-container")
   restaurantSearchResultsSection.innerHTML = restaurantResultsHtml
 }
 
