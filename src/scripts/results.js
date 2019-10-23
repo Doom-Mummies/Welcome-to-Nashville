@@ -27,64 +27,84 @@ const displayMeetupHtml = allMeetups => {
 
 }
 
-
-
-
-
 // html to be put into .search-results in searchForm.js
 const buildRestaurantHtml = restaurant => `
-<article>
-  <h4>${restaurant.restaurant.name}</h4>
-  <p>
-      ${restaurant.restaurant.location.address}
-  </p>
-  <button id = "save-button">Save</button>
-</article>
+    <li class="restaurant-results-list-item">
+      <span>${restaurant.restaurant.name}: ${restaurant.restaurant.location.address}</span>
+      <button id = "save-button">Save</button>
+    </li>
 `
 
 
 const displayRestaurantHtml = allRestaurants => {
-  let restaurantResultsHtml = ""
-  let restaurantNum = 1
-  allRestaurants.forEach(restaurants => {
-    if(restaurantNum <= 4){
-    console.log(restaurants)
-    let restaurantHtml = buildRestaurantHtml(restaurants)
-    restaurantResultsHtml += restaurantHtml
-    restaurantNum++
-  }});
+  let restaurantResultsHtml = '<ol class="park-results-list">'
 
+  // limit to max four restuarants (i <= 3)
+  for(let i = 0; i < allRestaurants.length && i <= 3; i++){
+    console.log(allRestaurants[i])
+    restaurantResultsHtml += buildRestaurantHtml(allRestaurants[i])
+  }
 
-  const restaurantSearchResultsSection = document.querySelector(".search-results")
+  restaurantResultsHtml += '</ol>'
+
+  const restaurantSearchResultsSection = document.querySelector("#results-container")
   restaurantSearchResultsSection.innerHTML = restaurantResultsHtml
 }
 
+// function definition to build a single park list item and attach an event listener to the save button
+const buildParkListItem = (parkResult) => {
+  // create the "li" element and give it a class
+  const item = document.createElement("li")
+  item.classList = "park-results-list-item"
 
-// build up park list element with save button
-const buildParkListItem = parkResult => `
-  <li class="park-results-list-item">
-    <span class="park-results-description">${parkResult.name}: ${parkResult.address}</span>
-    <button class="save-park-button">Save</button>
-  </li>
-`
+  // create the description for the inside of the "li" element, 
+  // give it a class, 
+  // construct the text to display,
+  // and append it to the "li" element
+  const description = document.createElement("span")
+  description.classList = "park-results-description"
+  description.textContent = `${parkResult.name}: ${parkResult.address}`
+  item.appendChild(description)
 
-// construct and display park html
-const displayParkHtml = parkResults => {
-  // hold the list items created
-  let parkResultsListHtml = ``
+  // create the button for the "li" element,
+  // give it a class,
+  // have it display "Save" on the button,
+  // attach a event listener to the button for adding it to the itinerary,
+  // and then append the button to the "li" element
+  const button = document.createElement("button")
+  button.classList = "save-park-button"
+  button.textContent = "Save"
+  button.addEventListener("click", () => {
+    // get a reference to the itinerary section for parks,
+    // duplicate the description of the park to save,
+    // remove any existing description in the park itinerary,
+    // and append the cloned park description to the park itinerary section
+    const parkItinerary = document.querySelector(".park-itinerary")
+    const parkItineraryDesc = description.cloneNode(true)
+    parkItinerary.innerHTML = ""
 
-  // for each park in the results list
-  parkResults.forEach( park => {
-    // build and append to parkResultsListHtml
-    parkResultsListHtml += buildParkListItem(park)
+    parkItinerary.appendChild(parkItineraryDesc)
   })
+  item.appendChild(button)
 
-  // get a reference to the results container
+  // return the "li" element
+  return item
+}
+
+// function definition for displaying park results info
+const displayParkHtml = (parkResults) => {
+  // create a new ordered list element for the park results section
+  const parkResultsListHtml = document.createElement("ol")
+
+  // for each park result, append a new "li" element created by buildParkListItem
+  parkResults.forEach( park => {
+    parkResultsListHtml.appendChild(buildParkListItem(park))
+  })
+  // get a reference for the search results section
   const searchResultsSection = document.querySelector("#results-container")
-
-  // construct the park results ordered list with list items
-  const parkResultsHtml = `<ol class="park-results-list">${parkResultsListHtml}</ol>`
-
-  // replace the results section with park search results
-  searchResultsSection.innerHTML = parkResultsHtml
+  // clear it out of any previous search results
+  searchResultsSection.innerHTML = ""
+  // append the search results to the results section
+  searchResultsSection.appendChild(parkResultsListHtml)
+  
 }
