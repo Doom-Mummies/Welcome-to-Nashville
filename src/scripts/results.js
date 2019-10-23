@@ -21,7 +21,7 @@ const buildMeetupHtml = (meetupResult) => {
   meetupButton.addEventListener("click", () => {
 
 // Upon the button click, this selects the "restaurant-itinerary" section, clones the node, clears the previous entry in the itinerary, and appends the cloned node to the itinerary
-    const meetupItinerary = document.querySelector(".restaurant-itinerary")
+    const meetupItinerary = document.querySelector(".meetup-itinerary")
     const meetupItineraryDesc = meetupDescription.cloneNode(true)
     meetupItinerary.innerHTML = ""
 

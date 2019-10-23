@@ -32,17 +32,3 @@ const buildAndAppenditineraryForm = () => {
     const itineraryContainerDiv = document.querySelector("#iterary-container")
     itineraryContainerDiv.innerHTML = itineraryForm
   }
-
-  const saveMeetupToItineraryButton = () => {
-    const meetupSaveButton = document.querySelectorAll("#meetups-save-button")
-    console.log(meetupSaveButton)
-    for (let i = 0; i < meetupSaveButton.length; i++) {
-        meetupSaveButton.item(i).addEventListener("click", addMeetupToItinerary)
-        console.log(meetupSaveButton)
-    }
-  }
-
-
-  const addMeetupToItinerary = () => {
-      console.log("this is working!!!")
-  }
