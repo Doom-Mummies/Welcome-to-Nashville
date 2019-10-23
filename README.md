@@ -50,6 +50,17 @@ The Welcome to Nashville app helps you build an itinerary for your day in Music 
 1. Start `http-server -p 8080` (Download [http-server](https://github.com/http-party/http-server#readme) if not installed)
 1. Open `http://127.0.0.1:8080/` in your browser
 
+### Set up API keys
+You'll need to use the following API keys to grab the information. Add these in myApiKey.js:
+
+| Component | Variable Name | API |
+| ---: | :---: | --- |
+| parks | N/A | [Nashville Metro Gov API](https://dev.socrata.com/foundry/data.nashville.gov/xbru-cfzi) |
+| restaurants | zomatoApiKey | [Zomato API](https://developers.zomato.com/api) |
+| meetups | N/A | [Eventbrite API](https://www.eventbrite.com/developer/v3/) |
+| concerts | concertsTicketMasterKey | [Ticketmaster API](https://developer.ticketmaster.com/products-and-docs/apis/getting-started/) |
+
+
 ### Use the app
 Search for food, meetups, concerts, or parks, then click Save to build an itinerary for your visit. Wow!
 
