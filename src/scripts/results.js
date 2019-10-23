@@ -1,27 +1,56 @@
-// This creates the HTML that will be put in the results section upon search for Meetups
-const buildMeetupHtml = events => `
- <li class="meetup-results-list-item">
- <span class="meetup-results-description">${events.name.text}: ${events.description.text}</span>
- <button id="save-button">Save</button>
- </section>`
+// The next 2 functions below are for creating the meetup HTML and displaying it on the DOM
 
-// This function loops through the search results (events),creates an HTML element to hold the results , and appends them to the DOM in the results container
-const displayMeetupHtml = allMeetups => {
-  let meetupSearchResultsHtml = ``
-  allMeetups.forEach(events => {
-    let meetupHtml = buildMeetupHtml(events)
-    meetupSearchResultsHtml += meetupHtml
+// This creates the "li" HTML element that will be put in the results section upon search for Meetups
+const buildMeetupHtml = (meetupResult) => {
+
+  // This creates an "li" element and gives it a class of "meetup-results-list-item"
+  const meetupItem = document.createElement("li")
+  meetupItem.classList = "meetup-results-list-item"
+  
+
+// This creates a "span" element, gives it a class of "meetup-results-description", adds the text from the API to the "span", and appends the "span" to the "li"
+  const meetupDescription = document.createElement("span")
+  meetupDescription.classList = "meetup-results-description"
+  meetupDescription.textContent = `${meetupResult.name.text}: ${meetupResult.description.text}`
+  meetupItem.appendChild(meetupDescription)
+
+// This creates a "button", gives it a class of "save-meetup-button", gives it a text content of "Save", and adds the event listener to the button
+  const meetupButton = document.createElement("button")
+  meetupButton.classList = "save-button"
+  meetupButton.textContent = "Save"
+  meetupButton.addEventListener("click", () => {
+
+// Upon the button click, this selects the "restaurant-itinerary" section, clones the node, clears the previous entry in the itinerary, and appends the cloned node to the itinerary
+    const meetupItinerary = document.querySelector(".meetup-itinerary")
+    const meetupItineraryDesc = meetupDescription.cloneNode(true)
+    meetupItinerary.innerHTML = ""
+
+    meetupItinerary.appendChild(meetupItineraryDesc)
+  })
+  // this appends the button the the "li"
+  meetupItem.appendChild(meetupButton)
+
+  // this returns the entire "li" element will all contents
+  return meetupItem
+}
+
+// This function creates a "ol" element, loops through the search results (events), appends the search results ("li") to the "ol", and appends the entire "ol" element to the results continer in the DOM 
+const displayMeetupHtml = meetupResult => {
+  let meetupSearchResultsHtml = document.createElement("ol")
+  meetupResult.forEach(events => {
+    meetupSearchResultsHtml.appendChild(buildMeetupHtml(events))
   })
   const searchResultsSection = document.querySelector("#results-container")
 
-  // construct the park results ordered list with list items
-  const meetupResultsHtml = `<ol class="park-results-list">${meetupSearchResultsHtml}</ol>`
+  searchResultsSection.innerHTML = ""
 
-  // replace the results section with park search results
-  searchResultsSection.innerHTML = meetupResultsHtml
-
+  searchResultsSection.appendChild(meetupSearchResultsHtml)
 
 }
+
+
+
+
 
 // html to be put into .search-results in searchForm.js
 const buildRestaurantHtml = (restaurant, index) => `
@@ -35,7 +64,7 @@ const displayRestaurantHtml = allRestaurants => {
   let restaurantResultsHtml = '<ol class="restaurant-results-list">'
 
   // limit to max four restuarants (i <= 3)
-  for(let i = 0; i < allRestaurants.length && i <= 3; i++){
+  for (let i = 0; i < allRestaurants.length && i <= 3; i++) {
     console.log(allRestaurants[i])
     restaurantResultsHtml += buildRestaurantHtml(allRestaurants[i], i)
   }
@@ -47,6 +76,10 @@ const displayRestaurantHtml = allRestaurants => {
   
   attachEventListenerToRestaurantSaveButton()
 }
+
+
+
+
 
 // function definition to build a single park list item and attach an event listener to the save button
 const buildParkListItem = (parkResult) => {
@@ -69,7 +102,7 @@ const buildParkListItem = (parkResult) => {
   // attach a event listener to the button for adding it to the itinerary,
   // and then append the button to the "li" element
   const button = document.createElement("button")
-  button.classList = "save-park-button"
+  button.classList = "save-button"
   button.textContent = "Save"
   button.addEventListener("click", () => {
     // get a reference to the itinerary section for parks,
@@ -94,7 +127,7 @@ const displayParkHtml = (parkResults) => {
   const parkResultsListHtml = document.createElement("ol")
 
   // for each park result, append a new "li" element created by buildParkListItem
-  parkResults.forEach( park => {
+  parkResults.forEach(park => {
     parkResultsListHtml.appendChild(buildParkListItem(park))
   })
   // get a reference for the search results section
@@ -103,5 +136,5 @@ const displayParkHtml = (parkResults) => {
   searchResultsSection.innerHTML = ""
   // append the search results to the results section
   searchResultsSection.appendChild(parkResultsListHtml)
-  
+
 }
