@@ -23,10 +23,6 @@ const displayMeetupHtml = allMeetups => {
 
 }
 
-
-
-
-
 // html to be put into .search-results in searchForm.js
 const buildRestaurantHtml = restaurant => `
     <li class="restaurant-results-list-item">
@@ -39,6 +35,7 @@ const buildRestaurantHtml = restaurant => `
 const displayRestaurantHtml = allRestaurants => {
   let restaurantResultsHtml = '<ol class="park-results-list">'
 
+  // limit to max four restuarants (i <= 3)
   for(let i = 0; i < allRestaurants.length && i <= 3; i++){
     console.log(allRestaurants[i])
     restaurantResultsHtml += buildRestaurantHtml(allRestaurants[i])
