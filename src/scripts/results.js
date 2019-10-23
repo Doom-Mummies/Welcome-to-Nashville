@@ -56,31 +56,38 @@ const displayRestaurantHtml = allRestaurants => {
 }
 
 
-// build up park list element with save button
-const buildParkListItem = parkResult => `
-  <li class="park-results-list-item">
-    <span class="park-results-description">${parkResult.name}: ${parkResult.address}</span>
-    <button class="save-park-button">Save</button>
-  </li>
-`
+const buildParkListItem = (parkResult) => {
+  const item = document.createElement("li")
+  item.classList = "park-results-list-item"
 
-// construct and display park html
-const displayParkHtml = parkResults => {
-  // hold the list items created
-  let parkResultsListHtml = ``
+  const description = document.createElement("span")
+  description.classList = "park-results-description"
+  description.textContent = `${parkResult.name}: ${parkResult.address}`
+  item.appendChild(description)
 
-  // for each park in the results list
-  parkResults.forEach( park => {
-    // build and append to parkResultsListHtml
-    parkResultsListHtml += buildParkListItem(park)
+  const button = document.createElement("button")
+  button.classList = "save-park-button"
+  button.textContent = "Save"
+  button.addEventListener("click", () => {
+    const parkItinerary = document.querySelector(".park-itinerary")
+    const parkItineraryDesc = description.cloneNode(true)
+    parkItinerary.innerHTML = ""
+
+    parkItinerary.appendChild(parkItineraryDesc)
   })
+  item.appendChild(button)
 
-  // get a reference to the results container
+  return item
+}
+
+const displayParkHtml = (parkResults) => {
+  const parkResultsListHtml = document.createElement("ol")
+
+  parkResults.forEach( park => {
+    parkResultsListHtml.appendChild(buildParkListItem(park))
+  })
   const searchResultsSection = document.querySelector("#results-container")
-
-  // construct the park results ordered list with list items
-  const parkResultsHtml = `<ol class="park-results-list">${parkResultsListHtml}</ol>`
-
-  // replace the results section with park search results
-  searchResultsSection.innerHTML = parkResultsHtml
+  searchResultsSection.innerHTML = ""
+  searchResultsSection.appendChild(parkResultsListHtml)
+  
 }
