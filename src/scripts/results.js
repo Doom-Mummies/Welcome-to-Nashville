@@ -16,7 +16,7 @@ const buildMeetupHtml = (meetupResult) => {
 
 // This creates a "button", gives it a class of "save-meetup-button", gives it a text content of "Save", and adds the event listener to the button
   const meetupButton = document.createElement("button")
-  meetupButton.classList = "save-meetup-button"
+  meetupButton.classList = "save-button"
   meetupButton.textContent = "Save"
   meetupButton.addEventListener("click", () => {
 
@@ -101,7 +101,7 @@ const buildParkListItem = (parkResult) => {
   // attach a event listener to the button for adding it to the itinerary,
   // and then append the button to the "li" element
   const button = document.createElement("button")
-  button.classList = "save-park-button"
+  button.classList = "save-button"
   button.textContent = "Save"
   button.addEventListener("click", () => {
     // get a reference to the itinerary section for parks,
