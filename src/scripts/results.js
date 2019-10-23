@@ -1,9 +1,12 @@
 // This creates the HTML that will be put in the results section upon search for Meetups
 const buildMeetupHtml = events => `
- <li class="meetup-results-list-item">
+ <li class="meetup-results-list-item" id="${idNumber++}">
  <span class="meetup-results-description">${events.name.text}: ${events.description.text}</span>
  <button id="save-button">Save</button>
  </li>`
+
+// This declares a variable for the ID number
+idNumber = 1
 
 // This function loops through the search results (events),creates an HTML element to hold the results , and appends them to the DOM in the results container
 const displayMeetupHtml = allMeetups => {
@@ -11,6 +14,7 @@ const displayMeetupHtml = allMeetups => {
   allMeetups.forEach(events => {
     let meetupHtml = buildMeetupHtml(events)
     meetupSearchResultsHtml += meetupHtml
+  
   })
   const searchResultsSection = document.querySelector("#results-container")
 
