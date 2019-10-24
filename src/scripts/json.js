@@ -1,17 +1,30 @@
 const databaseURL = "http://localhost:8088"
 
 const putUpdatedField = (field, updatedObject) =>  {
-    let body = {}
-    body[`${field}`] = updatedObject
-    // { park: "updated stuff" }
-    console.log(body)
-    fetch(`${databaseURL}/itinerary/?id=1`, {
-        "headers": {
-            "Accept": "application/json",
-        },
-        "body": body,
-        "method": "PUT"
-    })
+
+    fetch(`${databaseURL}/itinerary/?id=1`)
     .then(response => response.json())
-    .then(response => console.log(response))
+    .then(response => {
+        response[`${field}`] = updatedObject
+
+        fetch(`${databaseURL}/itinerary/?id=1`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(response),
+            method: "PUT"
+        })
+        .then(response => response.json())
+        .then(response => console.log(response))
+    })
+    
+    // fetch(`${databaseURL}/itinerary/?id=1`, {
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(body),
+    //     method: "PUT"
+    // })
+    // .then(response => response.json())
+    // .then(response => console.log(response))
 }
