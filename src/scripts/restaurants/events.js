@@ -27,6 +27,9 @@ const handleRestaurantSave = index => {
   const resultField = document.getElementById(`save-text-${index}`)
   console.log(`saved result (${index})`, resultField.innerText)
 
+  // update database.json
+  putUpdatedField("restaurant", resultField.textContent)
+
   const restaurantItinerarySection = document.querySelector(".restaurant-itinerary")
   restaurantItinerarySection.innerText = resultField.innerText
 }

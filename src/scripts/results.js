@@ -25,6 +25,9 @@ const buildMeetupHtml = (meetupResult) => {
     const meetupItineraryDesc = meetupDescription.cloneNode(true)
     meetupItinerary.innerHTML = ""
 
+    // update database.json
+    putUpdatedField("meetup", meetupDescription.textContent)
+
     meetupItinerary.appendChild(meetupItineraryDesc)
   })
   // this appends the button the the "li"
@@ -116,6 +119,9 @@ const buildParkListItem = (parkResult) => {
     parkItinerary.innerHTML = ""
 
     parkItinerary.appendChild(parkItineraryDesc)
+
+    // update database.json
+    putUpdatedField("park", description.textContent)
   })
   item.appendChild(button)
 
