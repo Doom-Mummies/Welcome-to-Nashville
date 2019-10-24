@@ -12,3 +12,19 @@ function displayGenreSearch() {
         searchTicketMaster(concertsGenreSearchBox.value) //and puts that value into the argument of the searchTicketMaster function, which then runs that function (in my concerts folder api.js)
 })
 }
+
+//This is save button event listener
+
+const handleConcertSave = index => {
+    const resultField = document.getElementById(`concertResultText-${index}`)
+    console.log(`Saved result (${index})`, resultField.innerText)
+
+    const concertItinerarySection = document.querySelector(".concert-itinerary")
+    concertItinerarySection.innerText = resultField.innerText
+}
+
+const addToItinerarySaveButton = index => {
+    const concertSaveButton = document.getElementById(`concertResultButton-${index}`)
+    concertSaveButton.addEventListener("click", function () {handleConcertSave(index)}
+    )    
+}

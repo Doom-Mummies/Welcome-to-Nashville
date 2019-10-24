@@ -144,21 +144,32 @@ const displayParkHtml = (parkResults) => {
 /* CONCERTS SEARCH RESULTS SECTION */
 
 //Take the "concert" argument info and add the string to buildConcertHtml using string literals to get specific info
-const buildConcertHtml = concert => `
-<article>
-  <h4>${concert.name}</h4>
-  </article>
+const buildConcertHtml = (concert, index) => `
+  <li>
+    <h4 id="concertResultText-${index}">${concert.name}</h4>
+    <button type="button" id="concertResultButton-${index}">Add to itinerary</button>
+  </li>
   `
 
 
 const displaySearchResults = allConcerts => { //From api.js, passes the contents into function and calls them allConcerts
-  let concertsResultsHtml = "" //Create an empty variable that acts as a holding place for info
-  allConcerts.forEach(concert => { //Loop through each item, and call each item "concert". In each pass through in the loop, do the following:
-    let concertHtml = buildConcertHtml(concert) //1) Run the following function (located above) and pass the contents in as the "concert" argument
-    concertsResultsHtml += concertHtml //and 2) Take the results that are returned from the above function and add them to what is already contained in "concertsResultsHtml"
-  });
+  let concertsResultsHtml = `<ol class="concertResultsOL">` //Create an empty OL that acts as a holding place for info
 
-  const searchResultsSection = document.querySelector(".search-results") //Grab the section where we want to add search results...
+  for (let i= 0; i < allConcerts.length && i <=3; i++) {
+    concertsResultsHtml += buildConcertHtml(allConcerts[i], i)
+  }
+
+  concertsResultsHtml += `</ol>` 
+
+//   allConcerts.forEach(concert => { //Loop through each item, and call each item "concert". In each pass through in the loop, do the following:
+//     let concertHtml = buildConcertHtml(concert) //1) Run the following function (located above) and pass the contents in as the "concert" argument
+//     concertsResultsHtml += concertHtml //and 2) Take the results that are returned from the above function and add them to what is already contained in "concertsResultsHtml"
+//   });
+
+  const searchResultsSection = document.querySelector("#results-container") //Grab the section where we want to add search results...
   searchResultsSection.innerHTML = concertsResultsHtml //...and put them there
+
+  for (let i = 0; i < allConcerts.length && i <= 3; i++) {
+    addToItinerarySaveButton(i)
+  }
 }
- 
