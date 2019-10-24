@@ -32,3 +32,5 @@ const buildAndAppenditineraryForm = () => {
     const itineraryContainerDiv = document.querySelector("#iterary-container")
     itineraryContainerDiv.innerHTML = itineraryForm
   }
+
+  
