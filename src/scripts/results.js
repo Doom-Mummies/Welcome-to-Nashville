@@ -146,8 +146,8 @@ const displayParkHtml = (parkResults) => {
 //Take the "concert" argument info and add the string to buildConcertHtml using string literals to get specific info
 const buildConcertHtml = (concert, index) => `
   <li>
-    <h4 id="concertResultText-${index}">${concert.name}</h4>
-    <button type="button" id="concertResultButton-${index}">Add to itinerary</button>
+    <span id="concertResultText-${index}">${concert.name}: ${concert._embedded.venues[0].name}</span>
+    <button type="button" id="concertResultButton-${index}">Save</button>
   </li>
   `
 
