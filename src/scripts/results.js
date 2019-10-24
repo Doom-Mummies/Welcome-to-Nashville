@@ -53,27 +53,30 @@ const displayMeetupHtml = meetupResult => {
 
 
 // html to be put into .search-results in searchForm.js
-const buildRestaurantHtml = restaurant => `
+const buildRestaurantHtml = (restaurant, index) => `
     <li class="restaurant-results-list-item">
-      <span>${restaurant.restaurant.name}: ${restaurant.restaurant.location.address}</span>
-      <button id = "save-button">Save</button>
+      <span id= "save-text-${index}">${restaurant.restaurant.name}: ${restaurant.restaurant.location.address}</span>
+      <button id = "save-button-${index}" class = "save-button">Save</button>
     </li>
 `
 
-
 const displayRestaurantHtml = allRestaurants => {
-  let restaurantResultsHtml = '<ol class="park-results-list">'
+  let restaurantResultsHtml = '<ol class="restaurant-results-list">'
 
   // limit to max four restuarants (i <= 3)
   for (let i = 0; i < allRestaurants.length && i <= 3; i++) {
     console.log(allRestaurants[i])
-    restaurantResultsHtml += buildRestaurantHtml(allRestaurants[i])
+    restaurantResultsHtml += buildRestaurantHtml(allRestaurants[i], i)
   }
 
   restaurantResultsHtml += '</ol>'
 
   const restaurantSearchResultsSection = document.querySelector("#results-container")
   restaurantSearchResultsSection.innerHTML = restaurantResultsHtml
+  
+  for (let i = 0; i < allRestaurants.length && i <= 3; i++) {
+    attachEventListenerToRestaurantSaveButton(i)
+  }
 }
 
 
@@ -137,3 +140,25 @@ const displayParkHtml = (parkResults) => {
   searchResultsSection.appendChild(parkResultsListHtml)
 
 }
+
+/* CONCERTS SEARCH RESULTS SECTION */
+
+//Take the "concert" argument info and add the string to buildConcertHtml using string literals to get specific info
+const buildConcertHtml = concert => `
+<article>
+  <h4>${concert.name}</h4>
+  </article>
+  `
+
+
+const displaySearchResults = allConcerts => { //From api.js, passes the contents into function and calls them allConcerts
+  let concertsResultsHtml = "" //Create an empty variable that acts as a holding place for info
+  allConcerts.forEach(concert => { //Loop through each item, and call each item "concert". In each pass through in the loop, do the following:
+    let concertHtml = buildConcertHtml(concert) //1) Run the following function (located above) and pass the contents in as the "concert" argument
+    concertsResultsHtml += concertHtml //and 2) Take the results that are returned from the above function and add them to what is already contained in "concertsResultsHtml"
+  });
+
+  const searchResultsSection = document.querySelector(".search-results") //Grab the section where we want to add search results...
+  searchResultsSection.innerHTML = concertsResultsHtml //...and put them there
+}
+ 
