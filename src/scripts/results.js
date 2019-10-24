@@ -74,7 +74,9 @@ const displayRestaurantHtml = allRestaurants => {
   const restaurantSearchResultsSection = document.querySelector("#results-container")
   restaurantSearchResultsSection.innerHTML = restaurantResultsHtml
   
-  attachEventListenerToRestaurantSaveButton()
+  for (let i = 0; i < allRestaurants.length && i <= 3; i++) {
+    attachEventListenerToRestaurantSaveButton(i)
+  }
 }
 
 
