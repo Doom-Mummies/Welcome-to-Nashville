@@ -140,3 +140,25 @@ const displayParkHtml = (parkResults) => {
   searchResultsSection.appendChild(parkResultsListHtml)
 
 }
+
+/* CONCERTS SEARCH RESULTS SECTION */
+
+//Take the "concert" argument info and add the string to buildConcertHtml using string literals to get specific info
+const buildConcertHtml = concert => `
+<article>
+  <h4>${concert.name}</h4>
+  </article>
+  `
+
+
+const displaySearchResults = allConcerts => { //From api.js, passes the contents into function and calls them allConcerts
+  let concertsResultsHtml = "" //Create an empty variable that acts as a holding place for info
+  allConcerts.forEach(concert => { //Loop through each item, and call each item "concert". In each pass through in the loop, do the following:
+    let concertHtml = buildConcertHtml(concert) //1) Run the following function (located above) and pass the contents in as the "concert" argument
+    concertsResultsHtml += concertHtml //and 2) Take the results that are returned from the above function and add them to what is already contained in "concertsResultsHtml"
+  });
+
+  const searchResultsSection = document.querySelector(".search-results") //Grab the section where we want to add search results...
+  searchResultsSection.innerHTML = concertsResultsHtml //...and put them there
+}
+ 
