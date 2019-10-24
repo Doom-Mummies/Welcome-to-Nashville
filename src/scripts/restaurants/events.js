@@ -18,3 +18,24 @@ const handleSearch = event => {
     restaurantSearchButton.addEventListener("click", handleSearch)
   }
   
+
+
+
+
+// save button event listener
+const handleRestaurantSave = index => {
+  const resultField = document.getElementById(`save-text-${index}`)
+  console.log(`saved result (${index})`, resultField.innerText)
+
+  const restaurantItinerarySection = document.querySelector(".restaurant-itinerary")
+  restaurantItinerarySection.innerText = resultField.innerText
+}
+
+// tells when user clicks save button
+const attachEventListenerToRestaurantSaveButton = index => {
+  const restaurantSaveButton = document.getElementById(`save-button-${index}`)
+  restaurantSaveButton.addEventListener(
+    "click",
+    function () { handleRestaurantSave(index) }
+  )
+}
