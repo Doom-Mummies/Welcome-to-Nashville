@@ -53,27 +53,30 @@ const displayMeetupHtml = meetupResult => {
 
 
 // html to be put into .search-results in searchForm.js
-const buildRestaurantHtml = restaurant => `
+const buildRestaurantHtml = (restaurant, index) => `
     <li class="restaurant-results-list-item">
-      <span>${restaurant.restaurant.name}: ${restaurant.restaurant.location.address}</span>
-      <button id = "save-button">Save</button>
+      <span id= "save-text-${index}">${restaurant.restaurant.name}: ${restaurant.restaurant.location.address}</span>
+      <button id = "save-button-${index}" class = "save-button">Save</button>
     </li>
 `
 
-
 const displayRestaurantHtml = allRestaurants => {
-  let restaurantResultsHtml = '<ol class="park-results-list">'
+  let restaurantResultsHtml = '<ol class="restaurant-results-list">'
 
   // limit to max four restuarants (i <= 3)
   for (let i = 0; i < allRestaurants.length && i <= 3; i++) {
     console.log(allRestaurants[i])
-    restaurantResultsHtml += buildRestaurantHtml(allRestaurants[i])
+    restaurantResultsHtml += buildRestaurantHtml(allRestaurants[i], i)
   }
 
   restaurantResultsHtml += '</ol>'
 
   const restaurantSearchResultsSection = document.querySelector("#results-container")
   restaurantSearchResultsSection.innerHTML = restaurantResultsHtml
+  
+  for (let i = 0; i < allRestaurants.length && i <= 3; i++) {
+    attachEventListenerToRestaurantSaveButton(i)
+  }
 }
 
 
