@@ -116,6 +116,7 @@ const buildParkListItem = (parkResult) => {
     parkItinerary.innerHTML = ""
 
     parkItinerary.appendChild(parkItineraryDesc)
+    putUpdatedField("park", "updated park")
   })
   item.appendChild(button)
 
