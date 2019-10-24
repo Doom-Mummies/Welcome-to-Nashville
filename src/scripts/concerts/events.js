@@ -19,6 +19,9 @@ const handleConcertSave = index => {
     const resultField = document.getElementById(`concertResultText-${index}`)
     console.log(`Saved result (${index})`, resultField.innerText)
 
+    // update database.json
+    putUpdatedField("concerts", resultField.textContent)
+
     const concertItinerarySection = document.querySelector(".concert-itinerary")
     concertItinerarySection.innerText = resultField.innerText
 }
