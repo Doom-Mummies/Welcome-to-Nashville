@@ -20,7 +20,7 @@ const handleConcertSave = index => {
     console.log(`Saved result (${index})`, resultField.innerText)
 
     // update database.json
-    putUpdatedField("concerts", resultField.textContent)
+    putUpdatedField("concert", resultField.textContent)
 
     const concertItinerarySection = document.querySelector(".concert-itinerary")
     concertItinerarySection.innerText = resultField.innerText

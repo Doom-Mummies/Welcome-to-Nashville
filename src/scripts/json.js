@@ -17,14 +17,5 @@ const putUpdatedField = (field, updatedObject) =>  {
         .then(response => response.json())
         .then(response => console.log(response))
     })
-    
-    // fetch(`${databaseURL}/itinerary/?id=1`, {
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(body),
-    //     method: "PUT"
-    // })
-    // .then(response => response.json())
-    // .then(response => console.log(response))
+
 }
